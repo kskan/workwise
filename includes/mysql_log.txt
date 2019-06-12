@@ -1,0 +1,12 @@
+[2019-06-04 09:33]          Table 'company.pre_persoasdfghjkl' doesn't exist
+[2019-06-04 09:33]          Table 'company.pre_persoasdfghjkl' doesn't exist
+[2019-06-04 09:46]          Table 'company.pre_persoasdfghjkl' doesn't exist
+[2019-06-05 09:10]          Cannot add or update a child row: a foreign key constraint fails (`company`.`pre_person`, CONSTRAINT `job` FOREIGN KEY (`job_id`) REFERENCES `pre_job` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION)
+[2019-06-05 11:24]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+[2019-06-06 10:30]          Unknown system variable 'NAMEasdasdS'
+[2019-06-06 12:33]          Unknown column 'name' in 'field list'
+[2019-06-06 12:33]          Unknown column 'status' in 'field list'
+[2019-06-10 09:38]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+[2019-06-10 12:06]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM pre_config WHERE name = 'website'' at line 1
+[2019-06-10 12:34]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+[2019-06-11 10:40]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY id asc' at line 1
