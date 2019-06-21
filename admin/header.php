@@ -21,7 +21,7 @@ checkAdmin(); //检测是否登录
 					<span class="badge badge-danger bounceIn">1</span>
 					<ul class="dropdown-menu dropdown-sm pull-right user-dropdown">
 						<li class="user-avatar">
-							<?php if(isset($_SESSION['avatar']) && is_file($_SESSION['avatar'])){?>
+							<?php if(isset($_SESSION['avatar'])){?>
 								<img src="../assets/<?php echo $_SESSION['avatar'];?>" alt="" class="img-circle">
 							<?php }else{?>
 								<img src="../assets/admin/images/profile/profile1.jpg" alt="" class="img-circle">
@@ -39,7 +39,7 @@ checkAdmin(); //检测是否登录
 			</ul>
 			
 			<a href="index.html" class="brand">
-				<span class="brand-name">SIMPLIFY ADMIN</span>
+				<span class="brand-name"><?=$GETWEBTITLE?> 操作界面</span>
 			</a>
 		</div>
 
@@ -67,7 +67,7 @@ checkAdmin(); //检测是否登录
 			<div class="pull-right m-right-sm">
 				<div class="user-block hidden-xs">
 					<a href="#" id="userToggle" data-toggle="dropdown">
-						<?php if(isset($_SESSION['avatar']) && is_file($_SESSION['avatar'])){?>
+						<?php if(isset($_SESSION['avatar']) ){?>
 							<img src="../assets/<?php echo $_SESSION['avatar'];?>" alt="" class="img-circle inline-block user-profile-pic">
 						<?php }else{?>
 							<img src="../assets/admin/images/profile/profile1.jpg" alt="" class="img-circle inline-block user-profile-pic">

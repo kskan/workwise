@@ -1,0 +1,15 @@
+pre_config 系统配置 
+pre_group 角色 
+pre_rule 规则
+pre_admin 管理员 
+pre_user  用户表
+pre_post  帖子动态表
+pre_comment 评论表
+pre_tags 标签表
+pre_links 友情链接
+pre_follow 用户关注和粉丝
+pre_message 消息表
+
+
+SELECT post.*,user.username as username ,user.avatar as avatar FROM pre_post as post LEFT JOIN pre_user as user ON post.userid=user.id WHERE post.content='测试' or post.title='测试' ORDER BY post.createtime asc 
+SELECT `username` , `avatar` ,`desc`,`gellery` FROM pre_user WHERE id= 1 

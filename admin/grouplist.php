@@ -20,11 +20,6 @@ $start = ($page-1)*$limit;
 $grouplist = $db->select()->from('group')->limit("$start,$limit")->all();
 
 
-
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -98,7 +93,8 @@ $grouplist = $db->select()->from('group')->limit("$start,$limit")->all();
 
 		<!-- Delete Widget Confirmation -->
 		<form id="deletePost" method="post" action="<?php echo config('website').'/admin/ruledelete.php'?>">
-			<input type="hidden" name="deleteRule" value="" />	
+			<input type="hidden" name="deleteRule" value="" />
+			<div style="    display: none;">	
 			<div class="custom-popup delete-widget-popup delete-confirmation-popup" id="deleteWidgetConfirm">
 				<div class="popup-header text-center">
 					<span class="fa-stack fa-4x">
@@ -114,6 +110,7 @@ $grouplist = $db->select()->from('group')->limit("$start,$limit")->all();
 						<button type="button" class="btn btn-default deleteWidgetConfirm_close">取消</button>
 					</div>
 				</div>
+			</div>
 			</div>
 		</form>
   	</body>

@@ -2,8 +2,6 @@
 include_once('../includes/init.php');
 checkAdmin(); //检测是否登录
 isAuth();  //是否有权限
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,11 +11,8 @@ isAuth();  //是否有权限
 
   	<body class="overflow-hidden">
 		<div class="wrapper preload">
-			
 			<?php include_once('header.php');?>
-
 			<?php include_once('menu.php');?>
-			
 			<div class="main-container">
 				<div class="padding-md">
 					<div class="row">

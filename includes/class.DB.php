@@ -104,6 +104,11 @@ class DB
         $this->sql .= "FROM ".$this->pre_.$table." ";
         return $this;
     }
+    //左链表排查
+    public function leftjoin($tableas,$on){
+        $this->sql.="LEFT JOIN ".$this->pre_.$tableas." ON ".$on." ";
+        return $this;
+    }
 
     //查询where条件
     public function where($where = 1)
@@ -224,6 +229,19 @@ class DB
 
         return mysqli_affected_rows($this->conn);  //返回影响行数
     }
+
+    public function groupBy($fields)
+    {
+        $this->sql .= " group by $fields ";
+        return $this;
+    }
+
+
+
+    
+
+
+    
 
 
 

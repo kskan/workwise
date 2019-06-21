@@ -10,3 +10,62 @@
 [2019-06-10 12:06]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM pre_config WHERE name = 'website'' at line 1
 [2019-06-10 12:34]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
 [2019-06-11 10:40]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY id asc' at line 1
+[2019-06-12 09:19]          Unknown column 'groupid' in 'field list'
+[2019-06-12 09:20]          Unknown column 'status' in 'field list'
+[2019-06-12 09:20]          Unknown column 'status' in 'field list'
+[2019-06-13 04:22]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'groups FROM pre_config  group by groups' at line 1
+[2019-06-13 04:25]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'groups FROM pre_config  group by groups' at line 1
+[2019-06-13 04:25]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'groups FROM pre_config  group by groups' at line 1
+[2019-06-13 04:28]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'groups FROM pre_config  group by groups' at line 1
+[2019-06-13 06:09]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'groups FROM pre_config  group by groups' at line 1
+[2019-06-13 06:15]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'groups FROM pre_config  group by groups' at line 1
+[2019-06-13 07:55]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'groups FROM pre_config  group by groups' at line 1
+[2019-06-13 07:55]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'groups FROM pre_config  group by groups' at line 1
+[2019-06-13 07:56]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'groups FROM pre_config  group by groups' at line 1
+[2019-06-13 08:06]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'groups FROM pre_config  group by groups' at line 1
+[2019-06-13 08:48]          Unknown column 'value' in 'field list'
+[2019-06-13 08:48]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM pre_config WHERE name='useropen'' at line 1
+[2019-06-13 08:50]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM pre_config WHERE name='useropen'' at line 1
+[2019-06-13 08:52]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM pre_config WHERE name='useropen'' at line 1
+[2019-06-13 10:27]          Table 'workwise.pre_pre_config_groupname' doesn't exist
+[2019-06-13 10:27]          Table 'workwise.pre_pre_config_groupname' doesn't exist
+[2019-06-13 10:27]          Table 'workwise.pre_pre_config_groupname' doesn't exist
+[2019-06-13 11:20]          Unknown column 'username' in 'field list'
+[2019-06-14 09:08]          Unknown column 'followid' in 'where clause'
+[2019-06-15 15:01]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+
+
+[2019-06-16 06:03]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'check' at line 1
+[2019-06-16 06:06]          Unknown column 'imooc' in 'where clause'
+[2019-06-16 06:08]          Unknown column 'imooc' in 'where clause'
+[2019-06-16 06:10]          Unknown column 'ceartime' in 'field list'
+[2019-06-16 06:10]          Unknown column 'creatime' in 'field list'
+[2019-06-16 06:11]          Unknown column 'createime' in 'field list'
+[2019-06-16 06:43]          Unknown column 'message' in 'where clause'
+[2019-06-16 06:43]          Unknown column 'message' in 'where clause'
+[2019-06-16 07:07]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'post.content='测试' or post.title='测试' ORDER BY createtime asc' at line 1
+[2019-06-16 07:15]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'post.content='测试' or post.title='测试' ORDER BY post.createtime asc' at line 1
+[2019-06-16 07:15]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'post.content='测试' or post.title='测试' ORDER BY post.createtime asc' at line 1
+[2019-06-16 07:19]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'post.content='测试' or post.title='测试' ORDER BY post.createtime asc' at line 1
+[2019-06-16 07:51]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc,gellery FROM pre_user WHERE id=' at line 1
+[2019-06-16 07:51]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc,gellery FROM pre_user WHERE id= 1' at line 1
+[2019-06-16 07:51]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc,gellery FROM pre_user WHERE id= 1' at line 1
+[2019-06-16 07:52]          Unknown column 'gellery' in 'field list'
+[2019-06-16 07:56]          Unknown column 'gellery' in 'field list'
+[2019-06-16 07:58]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc,gallery FROM pre_user WHERE id= 1' at line 1
+[2019-06-16 08:13]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM pre_follow WHERE followid= 1 and followedid=2' at line 1
+[2019-06-16 08:15]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM pre_follow WHERE followid = '1' and followedid='2'' at line 1
+[2019-06-17 03:32]          Table 'workwise.pre_link' doesn't exist
+[2019-06-17 03:39]          Table 'workwise.pre_link' doesn't exist
+[2019-06-17 03:55]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+[2019-06-17 08:17]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+[2019-06-17 08:21]          Unknown column 'follow.followdeid' in 'on clause'
+[2019-06-17 09:06]          Unknown column 'user.id' in 'on clause'
+[2019-06-17 09:07]          Unknown column 'user.id' in 'on clause'
+[2019-06-18 08:20]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+[2019-06-18 08:31]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc FROM pre_post as post LEFT JOIN pre_user as user ON post.userid=user.id WHE' at line 1
+[2019-06-18 08:31]          You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc FROM pre_post as post LEFT JOIN pre_user as user ON post.userid=user.id WHE' at line 1
+[2019-06-18 09:30]          Unknown column 'message.postid' in 'where clause'
+[2019-06-18 09:33]          Unknown column 'message.postid' in 'where clause'
+[2019-06-18 09:33]          Unknown column 'message.postid' in 'where clause'
+[2019-06-18 10:03]          Unknown column 'create' in 'field list'

@@ -14,9 +14,9 @@ $adminmenu = json_decode(adminMenu(),true);
 				<li class="menu-header">
 					Main Menu
 				</li>
-
 				<?php foreach($adminmenu as $item){?>
-					<li class="<?php echo $item['pidclass']?> bg-palette3 <?php echo $item['ismenu'] ? '':'hidden';?>">
+				<?php if($item['pid']==0){?>
+					<li class="<?=$item['pid']==0?"openable":"" ?> bg-palette3 <?php echo $item['ismenu'] ? '':'hidden';?>">
 						<a href="<?php echo config('website').$item['url']?>">
 							<span class="menu-content block">
 								<span class="menu-icon"><i class="block fa fa-list fa-lg"></i></span>
@@ -24,17 +24,15 @@ $adminmenu = json_decode(adminMenu(),true);
 								<span class="submenu-icon"></span>
 							</span>
 							<span class="menu-content-hover block">
+				
 							<?php echo $item['title'];?>
 							</span>
 						</a>
-						<?php if(isset($item['son']) && !empty($item['son'])){?>
-						<ul class="submenu bg-palette4">
-							<?php foreach($item['son'] as $value){?>
-							<li class="<?php echo $value['ismenu'] ? '':'hidden';?>"><a href="<?php echo config('website').$value['url'];?>"><span class="submenu-label"><?php echo $value['title'];?></span></a></li>
-							<?php }?>
-						</ul>
-						<?php }?>
+						
+						<?php son($item['id'],"")?>
+						
 					</li>
+				<?php }?>
 				<?php }?>
 				
 			</ul>
@@ -72,3 +70,26 @@ $adminmenu = json_decode(adminMenu(),true);
 		</div>
 	</div><!-- sidebar-inner -->
 </aside>
+
+
+<?php
+//函数包装递归
+function son($id ,$im){
+global $adminmenu;
+foreach($adminmenu as $value){
+	 if($value['pid']==$id){
+ ?> <ul class="submenu bg-palette4">
+<li  class=" <?php echo $value['ismenu'] ? '':'hidden';?>"><a href="<?php echo config('website').$value['url'];?>"><span class="submenu-label"><?php echo $im.$value['title'];?></span></a></li>
+</ul>
+<?php 
+     $list= array_column($adminmenu, 'pid');  
+    if(in_array($value['id'],$list)){
+		son($value['id'],$im."&nbsp;&nbsp;&nbsp;
+		&nbsp;");
+	} 
+
+}
+ }
+}
+
+?>

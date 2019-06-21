@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<title>Simplify Admin</title>
+<title><?=$GETWEBTITLE?>  后台界面</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -32,5 +32,6 @@
 <link href="../assets/plugin/page/page.css" rel="stylesheet">
 
 <link href="../assets/admin/css/common.css" rel="stylesheet">
+<script src="https://kit.fontawesome.com/ee4483e0fe.js"></script>
 
 

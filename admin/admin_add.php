@@ -1,19 +1,11 @@
 <?php
 include_once('../includes/init.php');
-
-
 //是否要自动登录
 $grounp = $db->select()->from("group")->where("not id=1 ")->all();
 // var_dump($grounp);
 // exit;
-
-
-
 if($_POST)
 {
-
-
-
 	$username = trim($_POST['username']);
 	$find=$db->select("username")->from("admin")->where("username = '$username'")->find();
 	if($find){
@@ -21,9 +13,6 @@ if($_POST)
 		exit;
 		
 	}
-	
-	
-	
 	$password = trim($_POST['password']);
 	$group_id= trim($_POST['group-id']);
 	$salt=$random->getRandChar();

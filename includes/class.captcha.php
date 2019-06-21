@@ -63,6 +63,7 @@ class captcha
         imagepng($this->img);
         imagedestroy($this->img);
     }
+    
     //对外生成
     public function doimg()
     {
@@ -81,6 +82,12 @@ class captcha
     public function setWidth($width)
     {
         $this->width = $width;
+    }
+    public function setCookie(){
+        $code=$this->code;
+        setcookie("v_c_v","$code",time()+3600*24);
+        
+
     }
 }
 

@@ -74,7 +74,7 @@ $rulues=explode( ",",$rulue);
 									<?php }?>
 								<?php }else{?>
 									<?php if(array_search("14",$rulues)){?>
-									<button type="submit" class="btn btn-info btn-xs" onclick="window.location.href='../includes/del_model.php?table=admin&mode=&id=<?=$item['id']?>">编辑</button>
+									<button type="submit" class="btn btn-info btn-xs" onclick="window.location.href='admin_edit.php?id=<?=$item['id']?>'">编辑</button>
 									<?php }?>
 									<?php if(array_search("13",$rulues)){?>
 								<button type="submit" class="btn btn-warning btn-xs" onclick="window.location.href='../includes/del_model.php?table=admin&mode=fakedel&id=<?=$item['id']?>'">放入回收站</button>	

@@ -1,19 +1,13 @@
 <?php
 include_once('../includes/init.php');
-
-
 $action = isset($_GET['action']) ? $_GET['action'] : "";
-
-
 //退出操作
 if($action == "logout")
 {
 	//释放所有会话变量，删除掉cookie
 	session_unset();
-
 	//如何让cookie过期
 	setcookie('auto',null,time()-123);
-
 	showMsg('退出成功','login.php');
 	exit;
 }
@@ -111,15 +105,12 @@ if($_POST)
 		exit;
 	}
 }
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
   	<head>
 	    <meta charset="utf-8">
-	    <title>Simplify Admin</title>
+	    <title><?=$GETWEBTITLE?>Admin 登陆</title>
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <meta name="description" content="">
 	    <meta name="author" content="">
@@ -143,7 +134,7 @@ if($_POST)
 			<div class="sign-in-wrapper">
 				<div class="sign-in-inner">
 					<div class="login-brand text-center">
-						<i class="fa fa-database m-right-xs"></i> Simplify <strong class="text-skin">Admin</strong>
+						<i class="fa fa-database m-right-xs"></i> <?=$GETWEBTITLE?> <strong class="text-skin">Admin</strong>
 					</div>
 
 					<form method="post">
@@ -158,7 +149,7 @@ if($_POST)
 						</div>
 
 						<div class="form-group">
-							<img src="http://www.workwise.com/captcha.php"onclick="this.src='http://www.workwise.com/captcha.php?random='+Math.random();" />
+							<img src="<?=$GETWEBURL?>/captcha.php?mode=adminlogin"onclick="this.src='<?=$GETWEBURL?>/captcha.php?mode=adminlogin&random='+Math.random();" />
 						</div>
 
 						<div class="form-group">

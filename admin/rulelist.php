@@ -117,8 +117,9 @@ foreach($ruleChild as $key=>$item)
 		
 
 		<!-- Delete Widget Confirmation -->
-		<form id="deletePost" method="post" action="<?php echo config('website').'/admin/ruledelete.php'?>">
+		<form id="deletePost" method="post"  action="<?php echo config('website').'/admin/ruledelete.php'?>">
 			<input type="hidden" name="deleteRule" value="" />	
+			<div style="    display: none;">
 			<div class="custom-popup delete-widget-popup delete-confirmation-popup" id="deleteWidgetConfirm">
 				<div class="popup-header text-center">
 					<span class="fa-stack fa-4x">
@@ -134,6 +135,7 @@ foreach($ruleChild as $key=>$item)
 						<button type="button" class="btn btn-default deleteWidgetConfirm_close">取消</button>
 					</div>
 				</div>
+			</div>
 			</div>
 		</form>
   	</body>

@@ -1,79 +1,64 @@
 <?php
 include_once('../includes/init.php');
 
-
-//是否要自动登录
+$id=isset($_GET['id'])?$_GET['id']:null;
+$show=$db->select()->from("admin")->where("id = $id")->find();
+if(!$show){
+  showMsg('用户不存在','');
+  exit;
+}
 $grounp = $db->select()->from("group")->where("not id=1 ")->all();
-// var_dump($grounp);
-// exit;
-
 
 
 if($_POST)
 {
 
-
-
 	$username = trim($_POST['username']);
-	$find=$db->select("username")->from("admin")->where("username = '$username'")->find();
-	if($find){
-		showMsg('用户已创建','admin_add.php');
-		exit;
-		
-	}
-	
-	
-	
+	// $find=$db->select("username")->from("admin")->where("username = '$username'")->find();
+	// if($find){
+	// 	showMsg('用户已创建','admin_add.php');
+	// 	exit;
+	// }
 	$password = trim($_POST['password']);
 	$group_id= trim($_POST['group-id']);
-	$salt=$random->getRandChar();
-	$md5password= md5($password.$salt);
+
+	
 	$data = array(
 		"username"=>$_POST['username'],
-		"password"=> $md5password,
-		"salt"=>$salt,
-		"createtime"=>time(),
+		// "password"=> $md5password,
+		// "salt"=>$salt,
+		// "createtime"=>time(),
 		"groupid"=>$_POST['group-id']
-	
 	  );
-	
-	if(isset($_FILES['avatar']))
-	{
-	  $uploads = uploads("avatar","../assets/uploads/");
-	  
-	  
-	  if($uploads['result'])
-	  {
-		//文件上传成功
-		$data['avatar'] = @trim($uploads['msg'],"../assets");
+	  if(!empty($password)){
+		 $salt=$random->getRandChar();
+	      $md5password= md5($password.$salt);
+		  $data['password']=$md5password;
+		  $data['salt']=$salt;
 	  }
+	  if(isset($_FILES['avatar']))
+	  {
+		  $uploads = uploads("avatar","../assets/uploads/");
+		  
+		  
+		  if($uploads['result'])
+		  {
+			  //文件上传成功
+			  $data['avatar'] = @trim($uploads['msg'],"../assets");
+			}
+		}
+		$admin = $db->update("admin",$data,"id = $id");
+		
+		if($admin)
+		{
+			showMsg('修改成功','adminlist.php');
+			exit;
+		}else{
+			showMsg('修改失败','admin_add.php');
+			exit;
+		}
 	}
-	
-	
-	
-	
-//   var_dump($data);
-//   exit();
-	
-
-	//链式操作
-	$admin = $db->insert("admin",$data);
-	
-
-	if($admin)
-	{
-		showMsg('添加成功','adminlist.php');
-		exit;
-	}else{
-		showMsg('添加失败','admin_add.php');
-		exit;
-	}
-
-
-
-}
-
-?>
+	?>
 
 
 <!DOCTYPE html>
@@ -333,11 +318,11 @@ if($_POST)
 								<form method="post" enctype="multipart/form-data">
 									<div class="form-group">
 										<label for="exampleInputEmail1">新添加管理员</label>
-										<input type="text" class="form-control" id="exampleInputEmail1" name="username" placeholder="Enter admin">
+										<input type="text" class="form-control" id="exampleInputEmail1" name="username" placeholder="Enter admin" value="<?=$show['username']?>">
 									</div><!-- /form-group -->
 									<div class="form-group">
 										<label for="exampleInputPassword1">管理密码</label>
-										<input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
+										<input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password" >
 									</div><!-- /form-group -->
 									<div class="form-group">
 										<label class="col-lg-2 control-label">头像上传</label>
@@ -350,9 +335,8 @@ if($_POST)
 										
 									<label for="exampleInputPassword1">给予权限</label>
 									<select class="form-control" name="group-id">
-												<option value="">请选择</option>
 												<?php  foreach($grounp as $item){?>
-													<option value="<?=$item['id']?>"><?=$item['name']?></option>
+													<option value="<?=$item['id']?>" <?=$item['id']==$show['groupid']?"selected":""?>><?=$item['name']?></option>
 												<?php }?>
 											</select>
 

@@ -66,14 +66,33 @@ function checkAdmin()
 	}
 
 }
+function checkUser()
+{
+	global $db;
+	//判断是否登录
+	$userid = isset($_COOKIE['userid']) ? $_COOKIE['userid'] : 0;
 
+	$admin = $db->select("*")->from('user')->where("id = $userid")->find();
+
+	if(empty($admin))
+	{
+		//清空session
+		session_unset();  //释放所有的会话变量
+		@header("Location:login.php");
+		exit;
+	}else{
+		return $admin;
+	}
+
+}
 
 //管理员菜单
 function adminMenu()
 {
 	global $db;
 
-	$cacherule = isset($_SESSION['adminmenu']) ? $_SESSION['adminmenu'] : "";
+	$cacherule = null;
+	// isset($_SESSION['adminmenu']) ? $_SESSION['adminmenu'] : "";
 
 
 	if(empty($cacherule))
@@ -87,32 +106,32 @@ function adminMenu()
 
 		//规则列表
 		$rulearr = $db->select()->from('rule')->where("id IN($ruleids)")->orderBy("pid","asc")->all();
+         $rulelist=$rulearr;
+		// if(empty($rulearr))
+		// {
+		// 	return array();
+		// }
 
-		if(empty($rulearr))
-		{
-			return array();
-		}
+		// $rulelist = array();
 
-		$rulelist = array();
+		// foreach($rulearr as $key=>$item)
+		// {
+		// 	if($item['pid'] == 0)
+		// 	{
+		// 		$item['pidclass'] = "openable";
+		// 		$rulelist[] = $item;
+		// 	}
 
-		foreach($rulearr as $key=>$item)
-		{
-			if($item['pid'] == 0)
-			{
-				$item['pidclass'] = "openable";
-				$rulelist[] = $item;
-			}
+		// 	foreach($rulelist as $k=>$v)
+		// 	{
+		// 		if($v['id'] == $item['pid'])
+		// 		{
+		// 			$rulelist[$k]['son'][] = $item;
+		// 		}
+		// 	}
+		// }
 
-			foreach($rulelist as $k=>$v)
-			{
-				if($v['id'] == $item['pid'])
-				{
-					$rulelist[$k]['son'][] = $item;
-				}
-			}
-		}
-
-		//保存到session中
+		// //保存到session中
 		$_SESSION['adminmenu'] = json_encode($rulelist);
 
 		return json_encode($rulelist);
@@ -245,6 +264,75 @@ function uploads($input,$path="uploads",$size=123123123)
 		return $res;
 	}
 }
+function uploadalls($input,$path="uploads",$size=123123123)
+{
+	$reslist=array();
+	$count=count( $_FILES[$input]['error']);
+	for($i=0;count( $_FILES[$input]['error'])>$i;$i++){
+	$error = $_FILES[$input]['error'][$i];
+
+	$res = array("result"=>false,"msg"=>null);
+
+	if($error > 0)
+	{
+		switch($error)
+		{
+			case 1:
+				$res['result'] = false;
+				$res['msg'] = "超过php.ini配置大小";
+				break;
+			case 2:
+				$res['result'] = false;
+				$res['msg'] = '超出隐藏域大小';
+				break;
+			case 3:
+				$res['result'] = false;
+				$res['msg'] = '网络中断';
+				break;
+			case 4:
+				$res['result'] = false;
+				$res['msg'] = '';
+		}
+
+		array_push($reslist,$res);
+		continue;
+	}
+
+
+	$input_size = $_FILES[$input]['size'][$i];
+
+	//判断是否有超出文件大小
+	if($input_size > $size)
+	{
+		$res['result'] = false;
+		$res['msg'] = '文件大小超出函数限制';
+		array_push($reslist,$res);
+	}
+
+
+	//生成新的文件名称
+	$ext = PATHINFO($_FILES[$input]['name'][$i],PATHINFO_EXTENSION);
+
+	$name = date("YmdHis").random_str(8).".$ext";
+
+	//判断文件是否是从正确的表单提交过来
+	if(is_uploaded_file($_FILES[$input]['tmp_name'][$i]))
+	{
+		//把文件移动
+		if(move_uploaded_file($_FILES[$input]['tmp_name'][$i],$path.$name))
+		{
+			$res['result'] = true;
+			$res['msg'] = $path.$name;
+		}else{
+			$res['result'] = false;
+			$res['msg'] = '文件失败成功';
+		}
+	  array_push($reslist,$res);
+	}
+}
+return $reslist;
+}
+
 
 
 function showMsg($msg='',$url = '')
@@ -260,6 +348,51 @@ function showMsg($msg='',$url = '')
 }
 
 
+//从服务器获取操作
+
+
+//获取当前服务器地址
+$GETWEBURL=$db->select("`values`")->from("config")->where("id = 1")->find();
+$GETWEBURL=$GETWEBURL['values'];
+
+//获取当前当前关键词
+$GETKEYWORD=$db->select("`values`")->from("config")->where("id = 2")->find();
+$GETKEYWORD=$GETKEYWORD['values'];
+
+
+//获取当前网站介绍
+$GETWEBCONEXT=$db->select("`values`")->from("config")->where("id = 3")->find();
+$GETWEBCONEXT=$GETWEBCONEXT['values'];
+
+
+//获取当前网站名称
+$GETWEBTITLE=$db->select("`values`")->from("config")->where("id = 4")->find();
+$GETWEBTITLE=$GETWEBTITLE['values'];
+
+//获取当前网站是否允许注册
+$GETWEBREGISTER=$db->select("`values`")->from("config")->where("id = 5")->find();
+$GETWEBREGISTER= json_now($GETWEBREGISTER['values']);
+if(!$GETWEBREGISTER&&!(get_url()!=$GETWEBURL."/register.php")){
+	showMsg("当前不允许开放注册","");
+	exit;
+}
+
+//
+
+
+
+//设置内容json数组 拆分
+function json_now($data){
+	$data=json_decode($data,true);	
+	if(strstr($data['now'],",")){
+	   
+		return explode(",",  $data['now']);
+
+	}else{
+		return $data['now'];
+	}
+
+}
 
 
 //得到当前网址
@@ -362,6 +495,7 @@ function page($current,$count,$limit,$size,$class='sabrosus'){
 	
 	return $str;
 }
+
 
 
 
